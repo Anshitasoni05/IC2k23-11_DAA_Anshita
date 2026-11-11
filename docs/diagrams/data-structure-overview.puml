@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+rectangle Arrays
+rectangle "Linked Lists" as Lists
+rectangle Stacks
+rectangle Queues
+rectangle Trees
+rectangle Graphs
+Arrays --> Stacks : array implementation
+Arrays --> Queues : circular array
+Lists --> Stacks : linked implementation
+Lists --> Queues : linked implementation
+Trees --> Graphs : hierarchical vs network
+@enduml

@@ -1,0 +1,4 @@
+import java.util.*;
+public class Main {
+ public static void main(String[]x){Scanner s=new Scanner(System.in);System.out.print("Vertices edges: ");int n=s.nextInt(),m=s.nextInt();long[][]a=new long[n][n];for(long[]r:a)Arrays.fill(r,Long.MAX_VALUE/4);for(int i=0;i<n;i++)a[i][i]=0;for(int i=0;i<m;i++){int u=s.nextInt(),v=s.nextInt();long w=s.nextLong();if(w<0){System.out.println("Dijkstra requires non-negative weights");return;}a[u][v]=Math.min(a[u][v],w);a[v][u]=Math.min(a[v][u],w);}int src=s.nextInt();long[]d=new long[n];boolean[]done=new boolean[n];Arrays.fill(d,Long.MAX_VALUE/4);d[src]=0;for(int k=0;k<n;k++){int u=-1;for(int i=0;i<n;i++)if(!done[i]&&(u<0||d[i]<d[u]))u=i;if(u<0||d[u]>=Long.MAX_VALUE/4)break;done[u]=true;for(int v=0;v<n;v++)if(d[v]>d[u]+a[u][v])d[v]=d[u]+a[u][v];}for(int i=0;i<n;i++)System.out.println(src+" -> "+i+" = "+(d[i]>=Long.MAX_VALUE/4?"unreachable":d[i]));}
+}

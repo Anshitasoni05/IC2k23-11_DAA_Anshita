@@ -1,0 +1,4 @@
+import java.util.*;
+public class Main {
+ public static void main(String[]x){int[][]m={{0,0,1,0},{1,0,1,0},{0,0,0,0},{0,1,1,0}};int n=m.length;int[][]d=new int[n][n];for(int[]r:d)Arrays.fill(r,-1);int[][]prev=new int[n*n][2];Queue<int[]>q=new ArrayDeque<>();q.add(new int[]{0,0});d[0][0]=0;int[]dr={1,-1,0,0},dc={0,0,1,-1};while(!q.isEmpty()){int[]p=q.remove();for(int k=0;k<4;k++){int r=p[0]+dr[k],c=p[1]+dc[k];if(r>=0&&c>=0&&r<n&&c<n&&m[r][c]==0&&d[r][c]<0){d[r][c]=d[p[0]][p[1]]+1;prev[r*n+c]=p;q.add(new int[]{r,c});}}}if(d[n-1][n-1]<0){System.out.println("No path");return;}List<String>path=new ArrayList<>();int r=n-1,c=n-1;while(r!=0||c!=0){path.add("("+r+","+c+")");int[]p=prev[r*n+c];r=p[0];c=p[1];}path.add("(0,0)");Collections.reverse(path);System.out.println("Shortest path: "+path+" length="+d[n-1][n-1]);}
+}

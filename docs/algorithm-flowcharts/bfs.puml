@@ -1,0 +1,13 @@
+@startuml
+start
+:Mark source visited;
+:Insert source into queue;
+while (Queue not empty?) is (yes)
+  :Remove front vertex u;
+  :Process u;
+  :For each unvisited neighbour v;
+  :Mark v visited;
+  :Enqueue v;
+endwhile (no)
+stop
+@enduml
